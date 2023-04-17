@@ -121,7 +121,8 @@ class CourseDetailView(generic.DetailView):
             if key.startswith('choice'):
                 value = request.POST[key]
                 choice_id = int(value)
-                submission.choice = Choice.objects.get(id=choice_id)
+                print(choice_id)
+                submission.choices.add(Choice.objects.get(id=choice_id))
 
         return redirect(reverse('onlinecourse:show_exam_result', args=(course_id, submission.id)))
     
@@ -142,12 +143,15 @@ class CourseDetailView(generic.DetailView):
         context = {}
         course = Course.objects.get(id=course_id)
         submission = Submission.objects.get(id=submission_id)
-        choices = submission.choices
+        choices = submission.choices.all()
 
         total = 0
 
         #implement total
 
+        print(choices)
+        print(submission)
+        
     
         context["course"] = course
         context["selected_ids"] = choices
