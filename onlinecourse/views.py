@@ -150,7 +150,9 @@ class CourseDetailView(generic.DetailView):
         for question in course.question_set.all():
             flag = True
             for choice in question.choice_set.all():
-                if not choice.is_correct and choice not in choices:
+                if not choice.is_correct and choice in choices:
+                    print(choice.is_correct)
+                    print(choice not in choices)
                     flag = False
             if flag:
                 total += question.grade

@@ -66,7 +66,7 @@
                             {% elif choice.is_correct and choice not in selected_ids %}
                                 <div class= "text-warning">Not Selected {{choice.choice_text}}</div>
                             {% else %}
-                                <div class= "text-danger">Incorrect: {{choice.choice_text}}</div>
+                                <div class= "text-dark">{{choice.choice_text}}</div>
                             {% endif %}
                         {% endfor %}
                         </div>
